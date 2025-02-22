@@ -1,0 +1,6 @@
+[ubuntu_servers]
+192.168.0.35 ansible_user=janar1 ansible_ssh_pass=janar1 ansible_become_pass=janar1
+192.168.0.36 ansible_user=janar2 ansible_ssh_pass=janar2 ansible_become_pass=janar2
+
+[ubuntu_servers:vars]
+ansible_python_interpreter=/usr/bin/python3

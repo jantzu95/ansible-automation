@@ -1,0 +1,11 @@
+---
+- name: Serveri seadistamine
+  hosts: ubuntu_servers
+  become: yes
+  roles:
+    - common
+    - docker
+    - nginx
+    - mysql
+    - postgresql
+    - backup
