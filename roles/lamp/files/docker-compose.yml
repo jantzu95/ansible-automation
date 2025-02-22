@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  web:
+    image: php:apache
+    ports:
+      - "8080:80"
+    volumes:
+      - ./html:/var/www/html
+
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: lamp_db
+      MYSQL_USER: lamp_user
+      MYSQL_PASSWORD: lamp_pass
+    ports:
+      - "3306:3306"

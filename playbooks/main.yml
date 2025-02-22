@@ -1,13 +1,13 @@
 ---
-- name: Serveri seadistamine
+- name: Seadista LAMP-stack serverid
   hosts: ubuntu_servers
-  become: yes
+  become: true
+
   roles:
     - common
     - docker
     - nginx
-#    - backup
-    - logs
-    - app
-    - lamp
-  vars: ansible_roles_path: "/home/janar1/ansible-project/roles"
+    - lamp  # <-- Parandatud siin, eelmine 'vars' rida oli vale
+
+  vars:
+    ansible_roles_path: "/home/janar1/ansible-project/roles"
