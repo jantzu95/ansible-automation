@@ -1,0 +1,10 @@
+---
+- name: Kopeeri Docker Compose fail
+  copy:
+    src: ../../lamp-stack/docker-compose.yml
+    dest: /home/{{ ansible_user }}/lamp-stack/docker-compose.yml
+
+- name: Käivita LAMP stack Docker Compose’iga
+  command: docker-compose up -d
+  args:
+    chdir: /home/{{ ansible_user }}/lamp-stack

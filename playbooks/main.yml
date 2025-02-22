@@ -9,5 +9,5 @@
 #    - backup
     - logs
     - app
-  vars:
-    ansible_roles_path: "/home/janar1/ansible-project/roles"
+    - lamp
+  vars: ansible_roles_path: "/home/janar1/ansible-project/roles"

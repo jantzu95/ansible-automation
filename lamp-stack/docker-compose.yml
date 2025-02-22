@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  apache:
+    image: httpd:latest
+    container_name: lamp-apache
+    ports:
+      - "80:80"
+    volumes:
+      - ./www:/usr/local/apache2/htdocs
+    depends_on:
+      - php
+
+  php:
+    image: php:8.3-apache
+    container_name: lamp-php
+    volumes:
+      - ./www:/var/www/html
+
+  mysql:
+    image: mysql:latest
+    container_name: lamp-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: lampdb
+      MYSQL_USER: lampuser
+      MYSQL_PASSWORD: lamppass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: lamp-phpmyadmin
+    restart: always
+    depends_on:
+      - mysql
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: lamp-mysql
+      MYSQL_ROOT_PASSWORD: rootpassword
+
+volumes:
+  mysql_data:
