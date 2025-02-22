@@ -6,6 +6,8 @@
     - common
     - docker
     - nginx
-    - mysql
-    - postgresql
-    - backup
+#    - backup
+    - logs
+    - app
+  vars:
+    ansible_roles_path: "/home/janar1/ansible-project/roles"

@@ -1,0 +1,26 @@
+---
+- name: Loo kaust rakendusele
+  file:
+    path: /home/janar1/app
+    state: directory
+    mode: '0755'
+
+- name: Lisa Docker Compose fail
+  copy:
+    dest: /home/janar1/app/docker-compose.yml
+    content: |
+      version: '3.8'
+      services:
+        web:
+          image: nginx
+          ports:
+            - "80:80"
+        db:
+          image: mysql
+          environment:
+            MYSQL_ROOT_PASSWORD: "rootpass"
+          ports:
+            - "3306:3306"
+
+- name: Käivita rakendus Docker Compose'iga
+  shell: "cd /home/janar1/app && docker-compose up -d"

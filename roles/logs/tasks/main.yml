@@ -1,0 +1,16 @@
+---
+- name: Kontrolli Nginxi logisid
+  shell: "tail -n 50 /var/log/nginx/access.log"
+  register: nginx_logs
+
+- name: Näita Nginxi viimaseid logisid
+  debug:
+    var: nginx_logs.stdout_lines
+
+- name: Kontrolli süsteemi logisid
+  shell: "journalctl -xe | tail -n 50"
+  register: system_logs
+
+- name: Näita süsteemi viimaseid logisid
+  debug:
+    var: system_logs.stdout_lines
